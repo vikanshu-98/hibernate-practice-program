@@ -1,0 +1,46 @@
+##################ANONATATION IN HIBERNATE###########################
+Package javax.persisitance.*;
+1. @Entity=>tell to hibernate that class is consider as a entity
+2. @Table=>modify the name of table
+3. @id=>describe the  primary key which are used in the  database
+4. @Generatedvalue=>it is auto increment value in id and  inside it we describe the STRATEGY i.e identity 
+5. @column=>it modify or declare the  length of  column and name 
+6. @Transient=>tell to the hibernate which column are save in db
+7. @Temporal =>tell to the hibernate that which format to save the date
+8. @LOb=>tell to hb for large object which is commonly useed for saving the imagwe
+9. @onetoone
+10. @onetomany
+11. @columnjoin
+diff get vs load
+     1.in get,if object is not found then return null
+       in load,it throw the objectnotfoundexception
+      2. get is use when we are not sure that object is present or not
+         load is use when we sure
+     3. in get,it will hit database when object in not presnt in the cache of session i.e fire the query of select .ootherwise it will not hit the DB
+        in load,it will return the proxy object i.e return the object without hit to the databse .it will hit DB when we use the method of this object so it is called lazy initialization .hence it improve the performanace;
+        /////////////////////////////
+        feth type-eager and lazy
+        lazy;- it is not fetch the data on the spot but it fetch when we explicity call the getter method
+        eager:- when we fetch the data then it is fetch all data on the spot.
+        ///////////////////////////////////////////////////////
+        hibernate/persistance cycle
+        there are 4 state in hibernate cycle
+        1. transient state  
+        2. persistance state
+        3. fetched state 
+        4. removed state
+       ////////////////****************************************************8/////////////////////////
+       1. transient state:-
+                       when we create the new ibject create and set their fields using setter and getter or constructor then it is in transient state.
+                       in this state,object is not associate with session and databse.
+         2. persistace state:-
+                       when we save the object in session then we associate our object with session hence it is persistance state.
+                       in this state ,it is sychronous i.e  when we change something in our object then it will change in session as well as database.
+         3. fetched state:-
+                       when we close the sesssion ,then our object is not assciate with session object.then  it is in fetched state.
+                       in this state,when  we change something in our object then it will not change the data in database as old data is present in db .
+          4. removed state:
+                          when  we delete the session then it is in removed state.
+                          in this state,data of db is delete but our obj is associate with sesion obj.
+ ////////////////////////////////////************************************************************/////////////////
+ 
